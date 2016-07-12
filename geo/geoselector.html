@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/geoselector.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="js/geo_selector_2.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+
+        <div class="get-city"></div>
+        <script type="text/javascript">
+            
+            $('.get-city').geoSelector();
+            
+/*
+            var gs = $('.get-city').geoSelector({
+                minInputChar: 1,
+                events: {
+                    onGsData: function (e, el, resp) {
+                                 console.log('onGSDAta: ' + resp);
+                    },
+                    onGsCityData: function (e, el, resp) {
+                         console.log('onGsCityData:  ' + resp);
+                    },
+                    onGsCityStart: function (e, el) {
+                         console.log('onGsCityStart: ' + JSON.stringify(el));
+                    },
+                    onGsError: function (e, el, text) {
+                         console.log('таких регионов нет');
+                    }
+                }
+            });           
+*/
+            //    $('.get-city').geoSelector('',4,'keyup',{events: {onGSData:function(e,el,resp){console.log('onGSDAta: ' + resp);}}});
+
+            $('.get-city').geoSelector('set',
+                    {minInputChar: 3,
+                        regionID: 20,
+                        bindEvent: 'mouseout',
+                        events: {
+                            onGsData: function (resp) {
+                                console.log(resp);
+                            },
+                            onGsCityStart: function() {
+                                console.log('начинаем поиск городов');
+                            },
+                             onGsError: function (text) {
+                                console.log(text);
+                    }
+                        }  
+                    });
+    
+            par = $('.get-city').geoSelector('get','events');
+            console.log(par);
+
+        </script>
+
+    </body>
+</html>
